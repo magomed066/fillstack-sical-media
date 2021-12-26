@@ -1,18 +1,16 @@
-import { Header } from '..'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { Feed } from '../../pages'
+import { Feed, Login, Main } from '../../pages'
 
 const App = () => {
 	return (
 		<Router>
 			<div className="App">
-				<Header />
-
-				<div className="main">
-					<Routes>
+				<Routes>
+					<Route path="/" element={<Login />} />
+					<Route path="/" element={<Main />}>
 						<Route path="/feed" element={<Feed />} />
-					</Routes>
-				</div>
+					</Route>
+				</Routes>
 			</div>
 		</Router>
 	)

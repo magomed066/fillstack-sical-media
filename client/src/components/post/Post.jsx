@@ -6,6 +6,7 @@ import {
 	DeleteOutlined,
 	BookOutlined,
 	CommentOutlined,
+	HeartOutlined,
 } from '@ant-design/icons'
 import Meta from 'antd/lib/card/Meta'
 
@@ -22,9 +23,10 @@ const Post = () => {
 				/>
 			}
 			actions={[
+				<HeartOutlined key="like" />,
+				<CommentOutlined key="comments" />,
 				<EditOutlined key="edit" />,
 				<DeleteOutlined key="ellipsis" />,
-				<CommentOutlined key="comments" />,
 				<BookOutlined key="book" />,
 			]}
 		>
