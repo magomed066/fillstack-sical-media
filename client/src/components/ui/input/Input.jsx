@@ -8,10 +8,14 @@ const Input = ({
 	name,
 	id,
 	label,
+	value,
 	type = 'text',
 	onChange,
+	onBlur,
 	focus,
 	togglePassword,
+	error = false,
+	helperText,
 }) => {
 	return (
 		<Grid item xs={12} sm={half ? 6 : 12}>
@@ -19,12 +23,16 @@ const Input = ({
 				fullWidth
 				required
 				name={name}
+				error={error}
+				helperText={helperText}
 				autoFocus={focus}
 				id={id}
+				value={value}
 				label={label}
 				type={type}
 				variant="outlined"
 				onChange={onChange}
+				onBlur={onBlur}
 				InputProps={
 					name === 'password'
 						? {
