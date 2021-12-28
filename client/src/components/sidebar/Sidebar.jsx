@@ -9,18 +9,6 @@ import {
 } from '@mui/material'
 import React from 'react'
 
-const data = [
-	{
-		title: 'Brunch this weekend?',
-	},
-	{
-		title: 'Summer BBQ',
-	},
-	{
-		title: 'Oui Oui',
-	},
-]
-
 const Sidebar = () => {
 	return (
 		<List>
