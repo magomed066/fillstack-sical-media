@@ -1,37 +1,95 @@
-import { List } from 'antd'
-import Avatar from 'antd/lib/avatar/avatar'
+import {
+	List,
+	ListItem,
+	Divider,
+	ListItemAvatar,
+	Avatar,
+	Typography,
+	ListItemText,
+} from '@mui/material'
 import React from 'react'
 
 const data = [
 	{
-		title: 'Ant Design Title 1',
+		title: 'Brunch this weekend?',
 	},
 	{
-		title: 'Ant Design Title 2',
+		title: 'Summer BBQ',
 	},
 	{
-		title: 'Ant Design Title 3',
-	},
-	{
-		title: 'Ant Design Title 4',
+		title: 'Oui Oui',
 	},
 ]
 
 const Sidebar = () => {
 	return (
-		<List
-			itemLayout="horizontal"
-			dataSource={data}
-			renderItem={(item) => (
-				<List.Item>
-					<List.Item.Meta
-						avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-						title={<a href="https://ant.design">{item.title}</a>}
-						description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-					/>
-				</List.Item>
-			)}
-		/>
+		<List>
+			<ListItem alignItems="flex-start">
+				<ListItemAvatar>
+					<Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+				</ListItemAvatar>
+				<ListItemText
+					primary="Brunch this weekend?"
+					secondary={
+						<React.Fragment>
+							<Typography
+								sx={{ display: 'inline' }}
+								component="span"
+								variant="body2"
+								color="text.primary"
+							>
+								Ali Connors
+							</Typography>
+							{" — I'll be in your neighborhood doing errands this…"}
+						</React.Fragment>
+					}
+				/>
+			</ListItem>
+			<Divider variant="inset" component="li" />
+			<ListItem alignItems="flex-start">
+				<ListItemAvatar>
+					<Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+				</ListItemAvatar>
+				<ListItemText
+					primary="Summer BBQ"
+					secondary={
+						<React.Fragment>
+							<Typography
+								sx={{ display: 'inline' }}
+								component="span"
+								variant="body2"
+								color="text.primary"
+							>
+								to Scott, Alex, Jennifer
+							</Typography>
+							{" — Wish I could come, but I'm out of town this…"}
+						</React.Fragment>
+					}
+				/>
+			</ListItem>
+			<Divider variant="inset" component="li" />
+			<ListItem alignItems="flex-start">
+				<ListItemAvatar>
+					<Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+				</ListItemAvatar>
+				<ListItemText
+					primary="Oui Oui"
+					secondary={
+						<React.Fragment>
+							<Typography
+								sx={{ display: 'inline' }}
+								component="span"
+								variant="body2"
+								color="text.primary"
+							>
+								Sandra Adams
+							</Typography>
+							{' — Do you have Paris recommendations? Have you ever…'}
+						</React.Fragment>
+					}
+				/>
+			</ListItem>
+		</List>
 	)
 }
 

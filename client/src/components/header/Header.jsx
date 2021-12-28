@@ -1,39 +1,88 @@
 import React, { useState } from 'react'
-import { Button, PageHeader, Switch } from 'antd'
 import classes from './header.module.scss'
-import { DropdownEl } from '../'
+import {
+	AppBar,
+	Box,
+	IconButton,
+	Menu,
+	MenuItem,
+	Typography,
+	Toolbar,
+} from '@mui/material'
+import { AccountCircle, Menu as MenuIcon } from '@mui/icons-material'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../slices/user'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
-	const [theme, setTheme] = useState('dark')
+	const [anchorEl, setAnchorEl] = useState(null)
+	const navigate = useNavigate()
+	const dispatch = useDispatch()
 
-	const changeTheme = () =>
-		setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+	const handleMenu = (event) => {
+		setAnchorEl(event.currentTarget)
+	}
 
+	const handleClose = () => {
+		setAnchorEl(null)
+	}
 	return (
-		<>
-			<PageHeader
-				title="ReShare"
-				className={classes.header}
-				theme={theme}
-				extra={[
-					<Button key="btnAdd" type="link">
-						Add post
-					</Button>,
-					<Button key="btnOpen" type="link">
-						Saved posts
-					</Button>,
-					<DropdownEl key="drop" />,
-					<Switch
-						key="switch"
-						onChange={changeTheme}
-						checked={theme === 'dark'}
-						checkedChildren="dark"
-						unCheckedChildren="light"
-						style={{ marginLeft: '20px' }}
-					/>,
-				]}
-			></PageHeader>
-		</>
+		<Box sx={{ flexGrow: 1 }}>
+			<AppBar position="static">
+				<Toolbar>
+					<IconButton
+						size="large"
+						edge="start"
+						color="inherit"
+						aria-label="menu"
+						sx={{ mr: 2 }}
+					>
+						<MenuIcon />
+					</IconButton>
+					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+						ReShare
+					</Typography>
+					<IconButton
+						size="large"
+						aria-label="account of current user"
+						aria-controls="menu-appbar"
+						aria-haspopup="true"
+						onClick={handleMenu}
+						color="inherit"
+					>
+						<AccountCircle />
+					</IconButton>
+					<Menu
+						id="menu-appbar"
+						anchorEl={anchorEl}
+						anchorOrigin={{
+							vertical: 'top',
+							horizontal: 'right',
+						}}
+						keepMounted
+						transformOrigin={{
+							vertical: 'top',
+							horizontal: 'right',
+						}}
+						open={Boolean(anchorEl)}
+						onClose={handleClose}
+					>
+						<MenuItem onClick={handleClose}>Profile</MenuItem>
+						<MenuItem onClick={handleClose}>My account</MenuItem>
+						<MenuItem
+							onClick={handleClose}
+							onClick={() => {
+								dispatch(logout())
+
+								navigate('/', { replace: true })
+							}}
+						>
+							Logout
+						</MenuItem>
+					</Menu>
+				</Toolbar>
+			</AppBar>
+		</Box>
 	)
 }
 

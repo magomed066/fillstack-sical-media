@@ -1,7 +1,5 @@
 import React from 'react'
-// import { Col, Row } from 'antd'
 import { Grid, Typography } from '@mui/material'
-import classes from './login.module.scss'
 import { FormLogin } from '../../components'
 
 const Login = () => {

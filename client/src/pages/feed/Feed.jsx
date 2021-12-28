@@ -1,21 +1,17 @@
-import { Col, Row } from 'antd'
 import React from 'react'
 import { Post, Sidebar } from '../../components'
-
-import classes from './feed.module.scss'
+import { Grid } from '@mui/material'
 
 const Feed = () => {
 	return (
-		<>
-			<Row className={classes.feed}>
-				<Col span={9} offset={5}>
-					<Post />
-				</Col>
-				<Col span={4} offset={1}>
-					<Sidebar />
-				</Col>
-			</Row>
-		</>
+		<Grid container justifyContent="center" mt={2} spacing={2}>
+			<Grid item xs={12} sm={5} md={5}>
+				<Post />
+			</Grid>
+			<Grid item xs={12} sm={4} md={3}>
+				<Sidebar />
+			</Grid>
+		</Grid>
 	)
 }
 
