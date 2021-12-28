@@ -8,10 +8,11 @@ import {
 	Typography,
 	Toolbar,
 } from '@mui/material'
-import { AccountCircle, Menu as MenuIcon } from '@mui/icons-material'
+import { AccountCircle, Add, Menu as MenuIcon } from '@mui/icons-material'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../slices/user'
 import { useNavigate } from 'react-router-dom'
+import { openModal } from '../../slices/modal'
 
 const Header = () => {
 	const [anchorEl, setAnchorEl] = useState(null)
@@ -43,6 +44,15 @@ const Header = () => {
 					</Typography>
 					<IconButton
 						size="large"
+						color="inherit"
+						onClick={() => {
+							dispatch(openModal())
+						}}
+					>
+						<Add />
+					</IconButton>
+					<IconButton
+						size="large"
 						aria-label="account of current user"
 						aria-controls="menu-appbar"
 						aria-haspopup="true"
@@ -51,6 +61,7 @@ const Header = () => {
 					>
 						<AccountCircle />
 					</IconButton>
+
 					<Menu
 						id="menu-appbar"
 						anchorEl={anchorEl}
