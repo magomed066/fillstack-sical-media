@@ -80,8 +80,8 @@ const Header = () => {
 						<MenuItem onClick={handleClose}>Profile</MenuItem>
 						<MenuItem onClick={handleClose}>My account</MenuItem>
 						<MenuItem
-							onClick={handleClose}
 							onClick={() => {
+								handleClose()
 								dispatch(logout())
 
 								navigate('/', { replace: true })

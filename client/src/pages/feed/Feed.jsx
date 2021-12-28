@@ -8,7 +8,7 @@ const Feed = () => {
 			<Grid item xs={12} sm={5} md={5}>
 				<Post />
 			</Grid>
-			<Grid item xs={12} sm={4} md={3}>
+			<Grid item xs={false} sm={false} md={4}>
 				<Sidebar />
 			</Grid>
 		</Grid>
