@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import classes from './header.module.scss'
 import {
 	AppBar,
 	Box,
